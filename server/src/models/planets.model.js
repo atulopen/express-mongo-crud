@@ -50,6 +50,7 @@ async function getAllPlanets() {
 }
 
 module.exports = {
-    loadData
+    loadData,
+    getAllPlanets,
 }
 
