@@ -1,7 +1,12 @@
 const express = require('express');
 const router = require('./routes/V1/api');
+const cors = require('cors');
 
 const app = express();
+
+app.use(cors({
+    origin: '*',
+}));
 
 app.use('/v1', router);
 
