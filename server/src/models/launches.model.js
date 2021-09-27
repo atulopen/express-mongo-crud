@@ -56,6 +56,7 @@ async function scheduleLaunch(launch) {
     Object.assign(launch, {
         success: true,
         upcoming: true,
+        customers: ['ZTM', 'ARTHUR'],
         flightNumber,
     })
 
