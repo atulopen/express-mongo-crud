@@ -2,12 +2,12 @@ const {getAllLaunches, scheduleLaunch} = require("../../../models/launches.model
 
 async function httpGetAllLaunches(req, res) {
     res.status(200);
-    res.json(await getAllLaunches());
+    return res.json(await getAllLaunches());
 }
 
 async function httpCreateLaunch(req, res) {
     const launch = req.body;
-    res.status(200);
+    res.status(201);
     return res.json(await scheduleLaunch(launch));
 }
 

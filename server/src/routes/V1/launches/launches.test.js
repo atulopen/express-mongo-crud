@@ -19,4 +19,25 @@ describe('Launches Api', () => {
                 .expect(200);
         })
     })
+
+    describe('Testing POST /launches', () => {
+        const launch = {
+            launchDate: '23 December, 2021',
+            target: 'Kepler-1410 b',
+            rocket: 'unit testing rocket',
+            mission: 'unit testing mission',
+            customers: ['ZTM', 'ARTHUR'],
+            success: true,
+            upcoming: true,
+        }
+        test('it should return 201 response', async () => {
+
+            await request(app)
+                .post('/v1/launches')
+                .send(launch)
+                .expect('Content-Type', /json/)
+                .expect(201);
+
+        })
+    });
 });
