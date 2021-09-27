@@ -37,6 +37,7 @@ function loadData() {
             reject(err);
         });
 
+
         file.on('end', async () => {
             const planets = await getAllPlanets();
             console.log(`${planets.length} planets found`);

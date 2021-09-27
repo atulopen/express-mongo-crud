@@ -51,7 +51,7 @@ async function getAllLaunches() {
 }
 
 async function scheduleLaunch(launch) {
-    const latestFlightNumber  = await getLatestFlightNumber();
+    const latestFlightNumber = await getLatestFlightNumber();
     const flightNumber = latestFlightNumber + 1;
     Object.assign(launch, {
         success: true,
@@ -59,10 +59,20 @@ async function scheduleLaunch(launch) {
         flightNumber,
     })
 
-   await saveLaunch(launch);
+    await saveLaunch(launch);
+}
+
+async function abortLaunch(launchId) {
+    await launchesDatabase.findOneAndUpdate({
+        flightNumber: launchId
+    }, {
+        success: false,
+        upcoming: false,
+    });
 }
 
 module.exports = {
     getAllLaunches,
-    scheduleLaunch
+    scheduleLaunch,
+    abortLaunch
 }
