@@ -2,6 +2,7 @@ const express = require('express');
 const router = require('./routes/V1/api');
 const cors = require('cors');
 const path = require('path');
+const morgan = require('morgan');
 
 const app = express();
 
@@ -9,6 +10,8 @@ const app = express();
 app.use(cors({
     origin: '*',
 }));
+
+app.use(morgan('combined'));
 
 app.use(express.json());
 
