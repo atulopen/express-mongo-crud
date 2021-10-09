@@ -1,8 +1,10 @@
 const {getAllLaunches, scheduleLaunch, abortLaunch} = require("../../../models/launches.model");
+const {getPagination} = require("../../../services/query");
 
 async function httpGetAllLaunches(req, res) {
+    const {skip, limit} = getPagination(req.query);
     res.status(200);
-    return res.json(await getAllLaunches());
+    return res.json(await getAllLaunches(skip, limit));
 }
 
 async function httpCreateLaunch(req, res) {

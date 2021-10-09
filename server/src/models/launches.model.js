@@ -108,8 +108,11 @@ async function saveLaunch(launch) {
 
 saveLaunch(launch);
 
-async function getAllLaunches() {
-    return launchesDatabase.find({});
+async function getAllLaunches(skip, limit) {
+    return launchesDatabase
+        .find({})
+        .skip(skip)
+        .limit(limit);
 }
 
 async function scheduleLaunch(launch) {
