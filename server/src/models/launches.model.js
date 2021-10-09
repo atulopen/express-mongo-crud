@@ -6,17 +6,6 @@ const SPACEX_API_URL = 'https://api.spacexdata.com/v4/launches/query';
 
 const DEFAULT_FLIGHT_NUMBER = 100;
 
-const launch = {
-    flightNumber: DEFAULT_FLIGHT_NUMBER,
-    launchDate: '23 December, 2021',
-    target: 'Kepler-1410 b',
-    rocket: 'testing rocket',
-    mission: 'testing mission',
-    customers: ['ZTM', 'ARTHUR'],
-    success: true,
-    upcoming: true,
-}
-
 async function populateLaunches() {
 
     console.log('Downloading Launches...');
@@ -106,11 +95,10 @@ async function saveLaunch(launch) {
     })
 }
 
-saveLaunch(launch);
-
 async function getAllLaunches(skip, limit) {
     return launchesDatabase
         .find({})
+        .sort({flightNumber: 1})
         .skip(skip)
         .limit(limit);
 }
