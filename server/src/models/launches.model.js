@@ -54,6 +54,7 @@ async function populateLaunches() {
             upcoming: launchDoc['upcoming'],
         }
 
+        console.log(`${launch.flightNumber} ${launch.mission}`);
         await saveLaunch(launch);
     }
 }
